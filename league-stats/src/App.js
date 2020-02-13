@@ -17,6 +17,17 @@ class App extends React.Component {
         level: 0,
       },
       rank: [],
+      current: "NA",
+      regions: [
+          { id: 0, locale: 'NA' },
+          { id: 1, locale: 'KR' },
+          { id: 2, locale: 'EUW' },
+          { id: 3, locale: 'EUNE' },
+          { id: 4, locale: 'JP' },
+          { id: 5, locale: 'BR' },
+          { id: 6, locale: 'LAN' },
+          { id: 7, locale: 'LAS' }
+      ]
     }
   }
 
@@ -30,7 +41,7 @@ class App extends React.Component {
       url: `https://hextechgg.herokuapp.com/api/summoner/summoner/`,
       data: {
         summonerName: this.state.value,
-        summonerRegion: "NA"
+        summonerRegion: this.state.current
       },
     })
       .then(res => {
@@ -62,9 +73,16 @@ class App extends React.Component {
       .catch(error => {
         console.log(error)
       })
+
+    this.setState({ value: ''})
+  }
+
+  regionChange = e => {
+    this.setState({ current: e.target.value})
   }
 
   render(){
+    console.log(this.state.rank)
     return (
       <div className="App">
         <Title />
@@ -72,9 +90,12 @@ class App extends React.Component {
           value={this.state.value}
           handleChanges={this.handleChanges}
           handleSubmit={this.handleSubmit}  
+          current={this.state.current}
+          regions={this.state.regions}
+          regionChange={this.regionChange}
         />
         <Info info={this.state.summoner} />
-        {this.state.rank.map(rank => {return <Rank rank={rank}/>})}
+        {this.state.rank.map(rank => {return <Rank rank={rank} key={rank.queueType}/>})}
       </div>
     );
   }
