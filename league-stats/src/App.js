@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-import Title from './components/Title';
 import Search from './components/Search';
 import Rank from './components/Rank';
 import Info from './components/Info';
@@ -12,9 +11,9 @@ class App extends React.Component {
     this.state = {
       value: "",
       summoner: {
-        name: "",
-        icon: 0,
-        level: 0,
+        name: "Hextech GG",
+        icon: 3367,
+        level: 30,
       },
       rank: [],
       current: "NA",
@@ -85,7 +84,6 @@ class App extends React.Component {
     console.log(this.state.rank)
     return (
       <div className="App">
-        <Title />
         <Search
           value={this.state.value}
           handleChanges={this.handleChanges}

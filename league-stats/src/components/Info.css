@@ -1,25 +1,10 @@
-.level{
-    width: 300px;
-    height: 300px;
+.level {
+  width: 300px;
+  height: 300px;
 }
 
-.icon{
-    border-radius: 100px;
-    width: 162px;
-    height: 162px;
-    position: relative;
-    top: 68px;
-}
-
-.border{
-    width: 300px;
-    height: 300px;
-    position: relative;
-    top: -165px;
-}
-
-.number{
-    position: relative;
-    top: -254px;
-    color: #F0E6D2;
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
