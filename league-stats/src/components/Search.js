@@ -1,6 +1,6 @@
 import React from 'react';
 import Region from './Region';
-import '../App.css'
+import '../components/css/App.css'
 
 const Search = (props) => {
     return (

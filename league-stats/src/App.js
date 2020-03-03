@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import '../src/components/css/App.css';
 import axios from 'axios';
 import Search from './components/Search';
 import Rank from './components/Rank';
