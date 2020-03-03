@@ -1,13 +1,17 @@
 import React from 'react';
 import Region from './Region';
 import '../components/css/App.css'
+import './css/Search.css'
 
 const Search = (props) => {
     return (
         <div>
             <form onSubmit={props.handleSubmit} className="search">
+                <span className="search-icon"><i class="fas fa-search"></i></span>
                 <input
+                    className='search-bar'
                     name="search"
+                    placeholder="Summoner Search"
                     type="text"
                     value={props.value}
                     onChange={props.handleChanges}
@@ -17,7 +21,7 @@ const Search = (props) => {
                     regions={props.regions}
                     regionChange={props.regionChange}
                 />
-                <button>Submit</button>
+                
             </form>
         </div>
     )

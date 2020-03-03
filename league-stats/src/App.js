@@ -26,7 +26,7 @@ class App extends React.Component {
           { id: 5, locale: 'BR' },
           { id: 6, locale: 'LAN' },
           { id: 7, locale: 'LAS' }
-      ]
+      ],
     }
   }
 

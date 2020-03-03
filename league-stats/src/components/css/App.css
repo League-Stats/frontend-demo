@@ -51,6 +51,14 @@ table {
   font-family: "GSans";
   src: local("GSans"), url(../../fonts/GillSansMTPro-Medium.otf) format("otf");
 }
+html {
+  background-image: url("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Annie_10.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -80,9 +88,6 @@ table {
   to {
     transform: rotate(360deg);
   }
-}
-.search {
-  display: flex;
 }
 
 /*# sourceMappingURL=App.css.map */

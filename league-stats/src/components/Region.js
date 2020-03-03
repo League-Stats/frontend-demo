@@ -1,15 +1,17 @@
 import React from 'react';
+import './css/Search.css';
 
 const Region = (props) => {
     return(
         <div>
-            <select onChange={props.regionChange}>
+            <select className="region-select" onChange={props.regionChange}>
                 {props.regions.map(region => (
                     <option key={region.id} value={region.locale}>
                         {region.locale}
                     </option>
                 ))}
             </select>
+            <span className="dropdown"><i class="fas fa-sort"></i></span>
         </div>
     )
 }
