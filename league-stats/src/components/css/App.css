@@ -52,7 +52,7 @@ table {
   src: local("GSans"), url(../../fonts/GillSansMTPro-Medium.otf) format("otf");
 }
 html {
-  background-image: url("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Annie_10.jpg");
+  background-image: radial-gradient(transparent, black), url("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Annie_10.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -62,8 +62,9 @@ html {
 .App {
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
 .App-header {
@@ -88,6 +89,31 @@ html {
   to {
     transform: rotate(360deg);
   }
+}
+.section-rank {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.section-right {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 670px;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav-link {
+  color: #CDBE91;
+  font-family: "Arial";
+  font-weight: bold;
+  margin: 10px;
+  font-size: 1.3rem;
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -84,16 +84,26 @@ class App extends React.Component {
     console.log(this.state.rank)
     return (
       <div className="App">
-        <Search
-          value={this.state.value}
-          handleChanges={this.handleChanges}
-          handleSubmit={this.handleSubmit}  
-          current={this.state.current}
-          regions={this.state.regions}
-          regionChange={this.regionChange}
-        />
-        <Info info={this.state.summoner} />
-        {this.state.rank.map(rank => {return <Rank rank={rank} key={rank.queueType}/>})}
+        <section className="section-left">
+          <Info info={this.state.summoner} />
+        </section>
+        <section className="section-right">
+          <div className="nav">
+            <a className="nav-link">PROFILE</a>
+            <a className="nav-link">MATCH HISTORY</a>
+            <Search
+              value={this.state.value}
+              handleChanges={this.handleChanges}
+              handleSubmit={this.handleSubmit}  
+              current={this.state.current}
+              regions={this.state.regions}
+              regionChange={this.regionChange}
+            />
+          </div>
+          <div className="section-rank">
+            {this.state.rank.map(rank => {return <Rank rank={rank} key={rank.queueType}/>})}
+          </div>
+        </section>
       </div>
     );
   }

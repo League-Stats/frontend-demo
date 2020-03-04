@@ -11,7 +11,7 @@ const Region = (props) => {
                     </option>
                 ))}
             </select>
-            <span className="dropdown"><i class="fas fa-sort"></i></span>
+            <span className="dropdown"><i className="fas fa-sort"></i></span>
         </div>
     )
 }

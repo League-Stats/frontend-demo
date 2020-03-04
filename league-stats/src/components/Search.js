@@ -7,7 +7,7 @@ const Search = (props) => {
     return (
         <div>
             <form onSubmit={props.handleSubmit} className="search">
-                <span className="search-icon"><i class="fas fa-search"></i></span>
+                <span className="search-icon"><i className="fas fa-search"></i></span>
                 <input
                     className='search-bar'
                     name="search"
