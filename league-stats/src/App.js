@@ -1,6 +1,5 @@
 import React from 'react';
 import '../src/components/css/App.css';
-import axios from 'axios';
 import Search from './components/Search';
 import Rank from './components/Rank';
 import Info from './components/Info';
@@ -34,46 +33,49 @@ class App extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    if(this.state.value === "discordtarzaned"){
+      this.setState({
+        summoner: {
+          name: "DISCORDTARZANED",
+          icon: 7,
+          level: 89
+        },
+        rank: [{
+          queueType: "Solo/Duo",
+          tier: "CHALLENGER",
+          rank: "I",
+          leaguePoints: 1495,
+          wins: 197,
+          losses: 142,
+        }]
+      })
+    }
 
-    axios.request({
-      method: 'POST',
-      url: `https://hextechgg.herokuapp.com/api/summoner/summoner/`,
-      data: {
-        summonerName: this.state.value,
-        summonerRegion: this.state.current
-      },
-    })
-      .then(res => {
-        this.setState({
-          summoner: {
-            name: res.data.name,
-            icon: res.data.icon,
-            level: res.data.level
-          }
-        })
+    if(this.state.value === "tai yang c"){
+      this.setState({
+        summoner: {
+          name: "tai yang c",
+          icon: 3180,
+          level: 322
+        },
+        rank: [{
+          queueType: "Solo/Duo",
+          tier: "DIAMOND",
+          rank: "II",
+          leaguePoints: 60,
+          wins: 85,
+          losses: 73,
+        },
+        {
+          queueType: "Solo/Duo",
+          tier: "CHALLENGER",
+          rank: "I",
+          leaguePoints: 168,
+          wins: 170,
+          losses: 142,
+        }]
       })
-      .catch(error => {
-        console.log(error)
-      })
-
-    axios.request({
-      method: 'POST',
-      url: `https://hextechgg.herokuapp.com/api/summoner/rank/`,
-      data: {
-        summonerName: this.state.value,
-	      summonerRegion: "NA"
-      },
-    })
-      .then(res => {
-        this.setState({
-          rank: res.data
-        })
-      })
-      .catch(error => {
-        console.log(error)
-      })
-
-    this.setState({ value: ''})
+    }
   }
 
   regionChange = e => {
@@ -100,6 +102,7 @@ class App extends React.Component {
               regionChange={this.regionChange}
             />
           </div>
+          <div className="message">NOTE: Due to Riot Games' rules, the API key can only be used for development purposes until the app is approved. Please search for "discordtarzaned" or "tai yang c" for the demo to work. Website is under construction.</div>
           <div className="section-rank">
             {this.state.rank.map(rank => {return <Rank rank={rank} key={rank.queueType}/>})}
           </div>
