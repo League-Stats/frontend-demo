@@ -102,7 +102,7 @@ class App extends React.Component {
               regionChange={this.regionChange}
             />
           </div>
-          <div className="message">NOTE: Due to Riot Games' rules, the API key can only be used for development purposes until the app is approved. Please search for "discordtarzaned" or "tai yang c" for the demo to work. Website is under construction.</div>
+          <div className="message">NOTE: Due to Riot Games' rules, the API key can only be used for development purposes until the app is approved. Please search for "discordtarzaned" or "tai yang c" for the demo to work. Website is under construction. Riot Games has currently disabled match history.</div>
           <div className="section-rank">
             {this.state.rank.map(rank => {return <Rank rank={rank} key={rank.queueType}/>})}
           </div>
