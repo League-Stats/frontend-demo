@@ -45,13 +45,13 @@ class App extends React.Component {
     const getPatch = await axios.get('https://ddragon.leagueoflegends.com/api/versions.json')
     const patch = getPatch.data.shift()
 
-    const getChampions = await axios(`http://ddragon.leagueoflegends.com/cdn/${patch}/data/en_US/champion.json`)
+    const getChampions = await axios(`https://ddragon.leagueoflegends.com/cdn/${patch}/data/en_US/champion.json`)
     const champions = Object.values(getChampions.data.data)
 
-    const getSpells = await axios(`http://ddragon.leagueoflegends.com/cdn/${patch}/data/en_US/summoner.json`)
+    const getSpells = await axios(`https://ddragon.leagueoflegends.com/cdn/${patch}/data/en_US/summoner.json`)
     const spells = Object.values(getSpells.data.data)
 
-    const getRunes = await axios(`http://ddragon.leagueoflegends.com/cdn/${patch}/data/en_US/runesReforged.json`)
+    const getRunes = await axios(`https://ddragon.leagueoflegends.com/cdn/${patch}/data/en_US/runesReforged.json`)
     const runes = getRunes.data
 
     this.setState({

@@ -8,7 +8,8 @@ export function teamsPicks(team, props){
     return(
         <div>
             {team.map(player => {
-                let champName = champions.find(champ => Number(champ.key) === player.championId).id
+                let champObj = champions.find(champ => Number(champ.key) === player.championId)
+                let champName = champObj.id
                 const spell1 = spells.find(spell => Number(spell.key) === player.spell1Id).id
                 const spell2 = spells.find(spell => Number(spell.key) === player.spell2Id).id
 
@@ -17,10 +18,10 @@ export function teamsPicks(team, props){
 
                 return(
                     <div className="player-loadouts" key={`${player.player.summonerName}${player.stats.damageDealtToTurrets}`}>
-                        <img className="mini-champ-icon" alt="champion-icon" src={`http://ddragon.leagueoflegends.com/cdn/${props.patch}/img/champion/${champName}.png`}/>
+                        <img className="mini-champ-icon" alt="champion-icon" src={`https://ddragon.leagueoflegends.com/cdn/${props.patch}/img/champion/${champName}.png`}/>
                         <div className="mini-spells">
-                          <img className="mini-spell" alt="Team Player's Summoner Spell 1" src={`http://ddragon.leagueoflegends.com/cdn/${props.patch}/img/spell/${spell1}.png`}/>
-                          <img className="mini-spell" alt="Team Player's Summoner Spell 2" src={`http://ddragon.leagueoflegends.com/cdn/${props.patch}/img/spell/${spell2}.png`}/>
+                          <img className="mini-spell" alt="Team Player's Summoner Spell 1" src={`https://ddragon.leagueoflegends.com/cdn/${props.patch}/img/spell/${spell1}.png`}/>
+                          <img className="mini-spell" alt="Team Player's Summoner Spell 2" src={`https://ddragon.leagueoflegends.com/cdn/${props.patch}/img/spell/${spell2}.png`}/>
                         </div>
                         <div className="mini-rune-perks">
                             <div className="mini-rune-perk-container">

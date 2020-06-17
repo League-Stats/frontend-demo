@@ -53,10 +53,10 @@ function Accordion(props) {
     const images =  <div className="curr-setup-container">
                       <p className="curr-player-champ-name"> {playerChamp.name}</p>
                       <div className="champ-spells-container">
-                        <img className="curr-champ-icon" alt="Current Player's Champ Icon" src={`http://ddragon.leagueoflegends.com/cdn/${props.patch}/img/champion/${playerChamp.id}.png`}/>
+                        <img className="curr-champ-icon" alt="Current Player's Champ Icon" src={`https://ddragon.leagueoflegends.com/cdn/${props.patch}/img/champion/${playerChamp.id}.png`}/>
                         <div className="curr-spells">
-                          <img className="curr-spell" alt="Current Player's Summoner Spell 1" src={`http://ddragon.leagueoflegends.com/cdn/${props.patch}/img/spell/${spell1.id}.png`}/>
-                          <img className="curr-spell" alt="Current Player's Summoner Spell 2" src={`http://ddragon.leagueoflegends.com/cdn/${props.patch}/img/spell/${spell2.id}.png`}/>
+                          <img className="curr-spell" alt="Current Player's Summoner Spell 1" src={`https://ddragon.leagueoflegends.com/cdn/${props.patch}/img/spell/${spell1.id}.png`}/>
+                          <img className="curr-spell" alt="Current Player's Summoner Spell 2" src={`https://ddragon.leagueoflegends.com/cdn/${props.patch}/img/spell/${spell2.id}.png`}/>
                         </div>
                       </div>
                     </div>
@@ -99,7 +99,7 @@ function Accordion(props) {
     const playerChamps = details.participantsInfo.map(player => {
       let champName = champions.find(champ => Number(champ.key) === player.championId).id
       return <div className="player-pick" key={player.player.summonerName}>
-        <img className="champ-icon" alt="champion-icon" src={`http://ddragon.leagueoflegends.com/cdn/${props.patch}/img/champion/${champName}.png`}/>
+        <img className="champ-icon" alt="champion-icon" src={`https://ddragon.leagueoflegends.com/cdn/${props.patch}/img/champion/${champName}.png`}/>
         <div className="player-names">{player.player.summonerName}</div>
       </div>
     })
