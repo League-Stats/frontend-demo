@@ -1,0 +1,251 @@
+.accordion-container
+  display: flex
+  flex-direction: column
+
+.accordion-win
+  font-family: Helvetica Neue,Roboto,Arial,Sans-Serif
+  color: #e6e5e7
+  font-weight: bold
+  background-color: rgba(79, 96, 135, 0.4)
+  cursor: pointer
+  padding: 18px
+  margin-top: 10px
+  display: flex
+  align-items: center
+  border: 1px solid black
+  outline: none
+  transition: background-color 0.6s ease
+
+.accordion-loss
+  font-family: Helvetica Neue,Roboto,Arial,Sans-Serif
+  color: #e6e5e7
+  font-weight: bold
+  background-color: rgba(135, 79, 79, 0.4)
+  cursor: pointer
+  padding: 18px
+  margin-top: 10px
+  display: flex
+  align-items: center
+  border: 0.5px solid black
+  outline: none
+  transition: background-color 0.6s ease
+
+.accordion-remake
+  font-family: Helvetica Neue,Roboto,Arial,Sans-Serif
+  color: #e6e5e7
+  font-weight: bold
+  background-color: #414149
+  cursor: pointer
+  padding: 18px
+  margin-top: 10px
+  display: flex
+  align-items: center
+  border: 1px solid black
+  outline: none
+  transition: background-color 0.6s ease
+
+.chevron
+  margin-left: auto
+  transition: transform 0.6s ease
+
+.rotate
+  transform: rotate(90deg)
+
+.accordion-win-inner
+  color: #e6e5e7
+  font-weight: bold
+  font-family: Helvetica Neue,Roboto,Arial,Sans-Serif
+  background-color: #4F6087
+  overflow: auto
+  transition: max-height 0.6s ease
+
+.accordion-loss-inner
+  color: #e6e5e7
+  font-weight: bold
+  font-family: Helvetica Neue,Roboto,Arial,Sans-Serif
+  background-color: #874F4F
+  overflow: auto
+  transition: max-height 0.6s ease
+
+.accordion-remake-inner
+  color: #e6e5e7
+  font-weight: bold
+  font-family: Helvetica Neue,Roboto,Arial,Sans-Serif
+  background-color: #414149
+  overflow: auto
+  transition: max-height 0.6s ease
+
+.inner-content
+  padding: 18px
+
+.player-names
+  white-space: nowrap
+  text-overflow: ellipsis
+  width: 60px
+  overflow: hidden
+  font-size: 11px
+  color: #bcc5e6
+  font-weight: bold
+
+.player-pick
+  display: flex
+  margin: 1px 0
+
+.champ-icon
+  width: 16px
+  height: 16px
+  margin-right: 5px
+
+.teams
+  display: flex
+  flex-direction: column
+  text-align: left
+  margin: 0px 5px
+
+.game-type
+  display: flex
+  flex-direction: column
+  width: 100px
+
+.objectives-icon
+  width: 16px
+  height: 16px
+  margin-right: 3px
+
+.objectives-container
+  display: flex
+  flex-direction: column
+  
+.objective
+  display: flex
+  align-items: center
+  margin: 1px 0px
+  margin-right: 4px
+
+.curr-champ-icon
+  width: 50px
+  height: 50px
+
+.curr-spell
+  width: 20px
+  height: 20px
+  border: 2px solid black
+
+.curr-spells
+  max-width: 50px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  margin-left: 2px
+
+.curr-player-champ-name
+  margin-bottom: 3px
+  color: #d3d8ee
+  font-weight: bold
+
+.curr-setup-container
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.champ-spells-container
+  display: flex
+
+.rune-perk
+  width: 24px
+  height: 24px
+
+.rune-perk-container
+  width: 24px
+  height: 24px
+  background-color: rgba(38, 50, 56, 0.3)
+  border-radius: 50px
+
+.player-loadout
+  display: flex
+  align-items: flex-end
+  margin: 0 10px
+
+.keystones
+  height: 50px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  margin: 0 2px
+
+.game-mode
+  color: #b5bee3
+  font-weight: bold
+
+.time-ago
+  color: #c7ceea
+  font-weight: bold
+
+.result-victory
+  color: #08a6ff
+  font-weight: bold
+
+.result-defeat
+  color: #ff4e50
+  font-weight: bold
+
+.result-remake
+  color: black
+  font-weight: bold
+
+.game-time
+  color: #c7ceea
+  font-weight: bold
+
+.curr-player-kda
+  margin-bottom: 8px
+
+.kda
+  font-size: 16px
+  font-weight: 900
+
+.curr-player-stats
+  width: 90px
+  margin-right: 10px
+  color: #e6e5e7
+  font-weight: bold
+
+.deaths
+  color: #fd4c4f
+
+.white-glow
+  color: #d3d8ee
+
+.curr-player-item
+  width: 30px
+  height: 30px
+  border-radius: 4px
+  margin: 2px
+
+.no-item
+  width: 30px
+  height: 30px
+  background-color: #333
+  opacity: 0.3
+  border-radius: 4px
+  margin: 2px
+
+.curr-player-items
+  display: flex
+  align-items: center
+  margin-right: 10px
+
+.curr-player-items-row-1
+  display: flex
+
+.curr-player-items-row-2
+  display: flex
+
+.curr-player-items
+  display: flex
+
+.curr-player-vision
+  text-align: center
+  font-size: 11px
+  width: 102px
+  margin-top: 2px

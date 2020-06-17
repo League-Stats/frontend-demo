@@ -1,8 +1,14 @@
 import React from 'react';
-import '../src/components/css/App.css';
+import './components/sass/App.sass';
+import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import Search from './components/Search';
-import Rank from './components/Rank';
 import Info from './components/Info';
+import History from './components/History';
+import RankContainer from './components/RankContainer';
+
+// TODO: FIX UNRANKED EMBLEM
 
 class App extends React.Component {
   constructor(props){
@@ -15,6 +21,9 @@ class App extends React.Component {
         level: 30,
       },
       rank: [],
+      history: [],
+      showGames: 5,
+      patch: "10.10.3208608",
       current: "NA",
       regions: [
           { id: 0, locale: 'NA' },
@@ -26,53 +35,54 @@ class App extends React.Component {
           { id: 6, locale: 'LAN' },
           { id: 7, locale: 'LAS' }
       ],
+      champions: [],
+      spells: [],
+      runes: [],
     }
+  }
+
+  async componentDidMount(){
+    const getPatch = await axios.get('https://ddragon.leagueoflegends.com/api/versions.json')
+    const patch = getPatch.data.shift()
+
+    const getChampions = await axios(`http://ddragon.leagueoflegends.com/cdn/${patch}/data/en_US/champion.json`)
+    const champions = Object.values(getChampions.data.data)
+
+    const getSpells = await axios(`http://ddragon.leagueoflegends.com/cdn/${patch}/data/en_US/summoner.json`)
+    const spells = Object.values(getSpells.data.data)
+
+    const getRunes = await axios(`http://ddragon.leagueoflegends.com/cdn/${patch}/data/en_US/runesReforged.json`)
+    const runes = getRunes.data
+
+    this.setState({
+      patch,
+      champions,
+      spells,
+      runes
+    })
   }
 
   handleChanges = e => this.setState({ value: e.target.value });
 
   handleSubmit = e => {
     e.preventDefault();
-    if(this.state.value === "discordtarzaned"){
-      this.setState({
-        summoner: {
-          name: "DISCORDTARZANED",
-          icon: 7,
-          level: 89
-        },
-        rank: [{
-          queueType: "Solo/Duo",
-          tier: "CHALLENGER",
-          rank: "I",
-          leaguePoints: 1495,
-          wins: 197,
-          losses: 142,
-        }]
-      })
-    }
+    this.props.history.push(`/profile/${this.state.current}/${this.state.value}`)
 
-    if(this.state.value === "tai yang c"){
+
+    if(this.state.current.toUpperCase() === "NA" && this.state.value.toUpperCase() === "DISCORDTARZANED"){
       this.setState({
         summoner: {
-          name: "tai yang c",
-          icon: 3180,
-          level: 322
+          name: "DISCORD TARZANED",
+          icon: 4568,
+          level: 101,
         },
         rank: [{
+          leaguePoints: 865,
+          losses: 197,
           queueType: "Solo/Duo",
-          tier: "DIAMOND",
-          rank: "II",
-          leaguePoints: 60,
-          wins: 85,
-          losses: 73,
-        },
-        {
-          queueType: "Solo/Duo",
-          tier: "CHALLENGER",
           rank: "I",
-          leaguePoints: 168,
-          wins: 170,
-          losses: 142,
+          tier: "CHALLENGER",
+          wins: 256,
         }]
       })
     }
@@ -83,16 +93,21 @@ class App extends React.Component {
   }
 
   render(){
-    console.log(this.state.rank)
+    const notice = {
+      color: '#8B0000',
+      backgroundColor: 'yellow',
+      width: '700px',
+      fontSize: '20px'
+    };
     return (
       <div className="App">
         <section className="section-left">
-          <Info info={this.state.summoner} />
+          <Info info={this.state.summoner} patch={this.state.patch} />
         </section>
         <section className="section-right">
           <div className="nav">
-            <a className="nav-link">PROFILE</a>
-            <a className="nav-link">MATCH HISTORY</a>
+            <Link to={`/profile/${this.state.current}/${this.state.value}`} className="nav-link">PROFILE</Link>
+            <Link to={`/matchhistory/${this.state.current}/${this.state.value}`} className="nav-link">MATCH HISTORY</Link>
             <Search
               value={this.state.value}
               handleChanges={this.handleChanges}
@@ -102,9 +117,22 @@ class App extends React.Component {
               regionChange={this.regionChange}
             />
           </div>
-          <div className="message">NOTE: Due to Riot Games' rules, the API key can only be used for development purposes until the app is approved. Please search for "discordtarzaned" or "tai yang c" for the demo to work. Website is under construction.</div>
-          <div className="section-rank">
-            {this.state.rank.map(rank => {return <Rank rank={rank} key={rank.queueType}/>})}
+          <p style={notice}>NOTE: DUE TO RIOT'S RULES, THE API KEY CAN ONLY BE USED FOR DEVELOPMENT UNTIL THE APP IS APPROVED. PLEASE SEARCH FOR "discordtarzaned" on "NA" region. WEBSITE IS UNDER CONSTRUCTION.</p>
+          <div className="match-history">
+            <Route path="/matchhistory/:region/:name">
+              <History
+                patch={this.state.patch}
+                champions={this.state.champions}
+                spells={this.state.spells}
+                runes={this.state.runes}
+                region={this.state.current}
+              />
+            </Route>
+          </div>
+          <div className="rank-display">
+            <Route path="/profile/:region/:name">
+              <RankContainer rank={this.state.rank}/>
+            </Route>
           </div>
         </section>
       </div>
@@ -112,4 +140,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
